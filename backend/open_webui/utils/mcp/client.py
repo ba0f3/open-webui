@@ -21,7 +21,8 @@ class MCPClient:
             read_stream, write_stream, _ = transport
 
             self._session_context = ClientSession(
-                read_stream, write_stream
+                read_stream, write_stream,
+                read_timeout_seconds=10,
             )  # pylint: disable=W0201
 
             self.session = await self.exit_stack.enter_async_context(
